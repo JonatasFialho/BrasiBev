@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo BrasiBev Bebidas | Distribuidora em Imperatriz - MA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Variáveis de Cores e Estilos Globais */
+        :root {
+            --bg-body: #050814; /* Night Blue Profundo */
+            --bg-surface: #0a1128; /* Azul Marinho Escuro */
+            --bg-surface-light: #121c3b;
+            --gold: #d4af37;
+            --gold-hover: #f1c40f;
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--bg-body);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(5, 8, 20, 0);
+            backdrop-filter: blur(0px);
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 8, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            background: linear-gradient(to right, rgba(5, 8, 20, 0.95) 0%, rgba(10, 17, 40, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            padding-top: 5rem;
+        }
+
+        .tagline {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Sections Gering */
+        section {
+            padding: 6rem 5%;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            transform: translate(15px, 15px);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-list {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-bg {
+            background-color: var(--bg-surface);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-surface-light);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .portfolio-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .portfolio-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .portfolio-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .portfolio-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Parceiros / Capture Section */
+        .capture-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(5, 8, 20, 0.9), rgba(10, 17, 40, 0.95)),
+                        url('https://images.unsplash.com/photo-1580687774725-4e23db308efc?auto=format&fit=crop&q=80&w=2000') center/cover;
+        }
+
+        .capture-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(18, 28, 59, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .capture-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .capture-text p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-surface-light);
+            padding: 4rem 5% 2rem 5%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-title {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animações (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .capture-container { grid-template-columns: 1fr; padding: 3rem; gap: 2rem; }
+            .capture-text h2 { text-align: center; }
+            .capture-text p { text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-surface);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem 2rem;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+                border-left: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-image::after { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            
+            .capture-container { padding: 2rem 1.5rem; }
+            
+            section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="logo">
+            <i data-lucide="package" class="text-gold"></i>
+            BrasiBev
+        </a>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#parceiros">Parceiros</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#parceiros" class="btn btn-primary" style="padding: 0.5rem 1.2rem; color: var(--bg-body);">Seja um Parceiro</a></li>
+        </ul>
+
+        <button class="menu-toggle" id="menu-toggle">
+            <i data-lucide="menu"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content reveal">
+            <span class="tagline">Distribuição Estratégica B2B</span>
+            <h1>A Força que <span class="text-gold">Movimenta</span> o seu Negócio</h1>
+            <p>Conectamos as melhores marcas de bebidas ao seu estabelecimento em Imperatriz e região com logística ágil, inteligência e parceria estratégica.</p>
+            <div class="hero-buttons">
+                <a href="#parceiros" class="btn btn-primary">
+                    Fale com um Consultor <i data-lucide="arrow-right" style="width: 18px;"></i>
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    Ver Portfólio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sobre a BrasiBev -->
+    <section id="sobre" class="about-section">
+        <div class="about-grid">
+            <div class="about-content reveal">
+                <h2 class="section-title" style="text-align: left;">Tradição e <span class="text-gold">Excelência</span> em Distribuição</h2>
+                <p>O Grupo BrasiBev Bebidas nasceu com o propósito de elevar o padrão de abastecimento para o varejo maranhense. Localizados no polo logístico de Imperatriz, garantimos que seu estoque nunca pare.</p>
+                <p>Entendemos que no setor de bares, restaurantes e supermercados, velocidade é lucro. Por isso, construímos uma operação focada no crescimento do nosso cliente parceiro.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item reveal delay-1">
+                        <div class="feature-icon"><i data-lucide="truck"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Logística Inteligente</h4>
+                            <p style="font-size: 0.95rem; margin: 0;">Entregas rápidas e programadas em Imperatriz e municípios vizinhos.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item reveal delay-2">
+                        <div class="feature-icon"><i data-lucide="handshake"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Parceria de Crescimento</h4>
+                            <p style="font-size: 0.95rem; margin: 0;">Consultoria de mix ideal e precificação para alavancar suas vendas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image reveal delay-3">
+                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800" alt="Armazém logístico de bebidas" onerror="this.src='https://images.unsplash.com/photo-1553456558-aff63285aaa1?auto=format&fit=crop&w=800'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosso Portfólio -->
+    <section id="portfolio" class="portfolio-bg">
+        <h2 class="section-title reveal">Nosso <span class="text-gold">Portfólio</span></h2>
+        <p class="section-subtitle reveal delay-1">Um mix completo e diversificado para atender a todas as demandas do seu estabelecimento comercial com as marcas líderes do mercado.</p>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal delay-1">
+                <div class="portfolio-icon"><i data-lucide="beer" size="32"></i></div>
+                <h3>Cervejas</h3>
+                <p>Portfólio completo de cervejas mainstream, premium, puro malte e artesanais, em diversos vasilhames.</p>
+            </div>
+            
+            <div class="portfolio-card reveal delay-2">
+                <div class="portfolio-icon"><i data-lucide="wine" size="32"></i></div>
+                <h3>Destilados & Vinhos</h3>
+                <p>Vodkas, whiskies, gins, cachaças e uma seleção rigorosa de vinhos nacionais e importados.</p>
+            </div>
+            
+            <div class="portfolio-card reveal delay-3">
+                <div class="portfolio-icon"><i data-lucide="cup-soda" size="32"></i></div>
+                <h3>Não-alcoólicos</h3>
+                <p>Refrigerantes, sucos, chás e águas (com e sem gás) para garantir a hidratação dos seus clientes.</p>
+            </div>
+            
+            <div class="portfolio-card reveal delay-1">
+                <div class="portfolio-icon"><i data-lucide="zap" size="32"></i></div>
+                <h3>Energéticos</h3>
+                <p>As marcas mais procuradas pelo público para impulsionar as vendas do período noturno e eventos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Captura / Seja Parceiro -->
+    <section id="parceiros" class="capture-section">
+        <div class="capture-container reveal">
+            <div class="capture-text">
+                <h2>Seja um <span class="text-gold">Parceiro B2B</span></h2>
+                <p>Abasteça seu bar, restaurante, conveniência ou supermercado com o Grupo BrasiBev. Preencha os dados e receba nossa tabela de preços e condições exclusivas para CNPJ.</p>
+                <ul style="color: var(--text-muted); margin-bottom: 2rem;">
+                    <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><i data-lucide="check-circle" class="text-gold" size="20"></i> Tabela diferenciada para atacado</li>
+                    <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><i data-lucide="check-circle" class="text-gold" size="20"></i> Prazo de pagamento flexível</li>
+                    <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><i data-lucide="check-circle" class="text-gold" size="20"></i> Atendimento dedicado</li>
+                </ul>
+            </div>
+            
+            <form class="capture-form" onsubmit="event.preventDefault(); alert('Solicitação enviada com sucesso! Em breve um consultor entrará em contato.');">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nome do Estabelecimento" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="CNPJ" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nome do Contato" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" placeholder="WhatsApp" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="E-mail" required>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit">Solicitar Tabela de Preços</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#home" class="logo" style="margin-bottom: 1rem;">
+                    <i data-lucide="package" class="text-gold"></i> BrasiBev
+                </a>
+                <p>A força logística que distribui qualidade e rentabilidade para o varejo de Imperatriz e todo o Maranhão.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4 class="footer-title">Contato Direto</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i data-lucide="phone" size="18"></i> (99) 99999-9999</a></li>
+                    <li><a href="#"><i data-lucide="message-circle" size="18"></i> Vendas WhatsApp</a></li>
+                    <li><a href="#"><i data-lucide="mail" size="18"></i> comercial@brasibev.com.br</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4 class="footer-title">Siga-nos</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i data-lucide="instagram" size="18"></i> @brasibevimperatriz</a></li>
+                    <li><a href="#"><i data-lucide="map-pin" size="18"></i> Imperatriz - MA</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Grupo BrasiBev Bebidas. Todos os direitos reservados. B2B Distribution.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Unificado -->
+    <script>
+        // Inicializar Ícones Lucide
+        lucide.createIcons();
+
+        // Lógica de Scroll da Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle do Menu Mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Altera o ícone do menu
+            const icon = navLinks.classList.contains('active') ? 'x' : 'menu';
+            menuToggle.innerHTML = `<i data-lucide="${icon}"></i>`;
+            lucide.createIcons();
+        });
+
+        // Fechar menu mobile ao clicar num link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = `<i data-lucide="menu"></i>`;
+                lucide.createIcons();
+            });
+        });
+
+        // Scroll Reveal Animations usando IntersectionObserver
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Desobservar após animar uma vez
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
