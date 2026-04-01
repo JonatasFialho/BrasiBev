@@ -10,9 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         /* Variáveis de Cores e Estilos Globais */
         :root {
@@ -599,7 +596,7 @@
                 </div>
             </div>
             <div class="about-image reveal delay-3">
-                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800" alt="Armazém logístico de bebidas" onerror="this.src='https://images.unsplash.com/photo-1553456558-aff63285aaa1?auto=format&fit=crop&w=800'">
+                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800" alt="Armazém logístico de bebidas" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553456558-aff63285aaa1?auto=format&fit=crop&w=800'">
             </div>
         </div>
     </section>
@@ -683,17 +680,33 @@
             <div class="footer-contact">
                 <h4 class="footer-title">Contato Direto</h4>
                 <ul class="footer-links">
-                    <li><a href="#"><i data-lucide="phone" size="18"></i> (99) 99999-9999</a></li>
-                    <li><a href="#"><i data-lucide="message-circle" size="18"></i> Vendas WhatsApp</a></li>
-                    <li><a href="#"><i data-lucide="mail" size="18"></i> comercial@brasibev.com.br</a></li>
+                    <li><a href="tel:+5599999999999"><i data-lucide="phone" size="18"></i> (99) 99999-9999</a></li>
+                    <li><a href="https://wa.me/5599999999999?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20consultor%20da%20BrasiBev!" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" size="18"></i> Vendas WhatsApp</a></li>
+                    <li><a href="mailto:comercial@brasibev.com.br"><i data-lucide="mail" size="18"></i> comercial@brasibev.com.br</a></li>
                 </ul>
             </div>
             
             <div class="footer-social">
                 <h4 class="footer-title">Siga-nos</h4>
                 <ul class="footer-links">
-                    <li><a href="#"><i data-lucide="instagram" size="18"></i> @brasibevimperatriz</a></li>
-                    <li><a href="#"><i data-lucide="map-pin" size="18"></i> Imperatriz - MA</a></li>
+                    <li>
+                        <a href="https://instagram.com/brasibevimperatriz" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            @brasibevimperatriz
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/company/brasibev" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            Grupo BrasiBev
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Imperatriz - MA
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -703,9 +716,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript Unificado -->
+    <!-- JavaScript Unificado e Otimizado -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.294.0/dist/umd/lucide.min.js"></script>
     <script>
-        // Inicializar Ícones Lucide
+        // Inicializar Ícones Lucide (apenas para os restantes)
         lucide.createIcons();
 
         // Lógica de Scroll da Navbar
